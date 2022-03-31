@@ -1,5 +1,8 @@
 function Test-ApiToken(
     [Parameter(Mandatory)]
+    [string]$BaseUri,
+
+    [Parameter(Mandatory)]
     [string]$ApiToken
 ) {
     <#
@@ -12,7 +15,7 @@ function Test-ApiToken(
         'Content-Type'  = "application/json"
     }
 
-    $Uri = $Config.RootUri + "/user/tokens/verify"
+    $Uri = $BaseUri + "/user/tokens/verify"
 
     try {
         $Result = (Invoke-RestMethod -Method Get -Uri $Uri -Headers $Headers).success

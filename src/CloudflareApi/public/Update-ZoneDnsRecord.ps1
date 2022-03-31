@@ -1,5 +1,8 @@
 function Update-ZoneDnsRecord(
     [Parameter(Mandatory)]
+    [string]$BaseUri,
+    
+    [Parameter(Mandatory)]
     [string]$ApiToken,
 
     [Parameter(Mandatory)]

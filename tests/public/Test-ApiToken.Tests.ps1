@@ -5,6 +5,7 @@ BeforeAll {
 Describe -Name 'Test-ApiToken' {
     BeforeAll {
         $TestApiToken = 'wxnfS4gF3T1AO2YCcO6NShE4o3DT8Ix8dcDYXKVW'
+        $BaseUri = 'https://api.cloudflare.com/client/v4'
     }
 
     It -Name 'Valid token' {

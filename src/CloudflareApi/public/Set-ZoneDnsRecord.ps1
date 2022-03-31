@@ -1,4 +1,7 @@
-function New-ZoneDnsRecord(
+function Set-ZoneDnsRecord(
+    [Parameter(Mandatory)]
+    [string]$BaseUri,
+
     [Parameter(Mandatory)]
     [string]$ApiToken,
 
@@ -6,20 +9,20 @@ function New-ZoneDnsRecord(
     [string]$ZoneId,
 
     [Parameter(Mandatory)]
+    [string]$Id,
+
     [string]$Name,
 
-    [Parameter(Mandatory)]
     [ValidateSet('A', 'CNAME')]
     [string]$Type,
 
-    [Parameter(Mandatory)]
     [string]$Content,
 
-    [switch]$Proxied
+    [bool]$Proxied
 ) {
     <#
     .SYNOPSIS
-    Create a new DNS record within a zone
+    Change a DNS record within a zone
     #>
 
     $Headers = @{
@@ -27,18 +30,18 @@ function New-ZoneDnsRecord(
         'Content-Type'  = "application/json"
     }
 
-    $Uri = $Config.RootUri + "/zones/$ZoneId/dns_records"
+    $Uri = $BaseUri + "/zones/$ZoneId/dns_records/$Id"
 
     $Body = [pscustomobject]@{
-        type    = $Type
-        name    = $Name
-        content = $Content
-        proxied = $Proxied ? $true : $false
+        type    = $Type ? $Type : $null
+        name    = $Name ? $Name : $null
+        content = $Content ? $Content : $null
+        proxied = $Proxied ? $Proxied : $null
     } | ConvertTo-Json
 
     try {
         $Result = Invoke-RestMethod `
-            -Method Post `
+            -Method Patch `
             -Uri $Uri `
             -Headers $Headers `
             -Body $Body

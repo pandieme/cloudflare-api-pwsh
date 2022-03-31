@@ -1,5 +1,8 @@
 function Remove-ZoneDnsRecord(
     [Parameter(Mandatory)]
+    [string]$BaseUri,
+
+    [Parameter(Mandatory)]
     [string]$ApiToken,
 
     [Parameter(Mandatory)]
@@ -33,7 +36,7 @@ function Remove-ZoneDnsRecord(
             }
         }
         else {
-            $Uri = $Config.RootUri + "/zones/$ZoneId/dns_records/" + $DnsRecord.id
+            $Uri = $BaseUri + "/zones/$ZoneId/dns_records/" + $DnsRecord.id
 
             $Response = Invoke-RestMethod `
                 -Method Delete `

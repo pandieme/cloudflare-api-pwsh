@@ -1,5 +1,8 @@
 function Get-ZoneDnsRecord(
     [Parameter(Mandatory)]
+    [string]$BaseUri,
+
+    [Parameter(Mandatory)]
     [string]$ApiToken,
 
     [Parameter(Mandatory)]
@@ -23,7 +26,7 @@ function Get-ZoneDnsRecord(
         "name=$Name"
     ) | Join-String -Property $_ -Separator "&" -OutputPrefix "?"
 
-    $Uri = $Config.RootUri + "/zones/$ZoneId/dns_records$Query"
+    $Uri = $BaseUri + "/zones/$ZoneId/dns_records$Query"
 
     try {
         $Result = Invoke-RestMethod `
