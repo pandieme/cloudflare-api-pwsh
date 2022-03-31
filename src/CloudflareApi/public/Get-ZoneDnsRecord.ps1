@@ -1,15 +1,15 @@
 function Get-ZoneDnsRecord(
+    [Parameter(Mandatory)]
+    [string]$Name,
+
     [Parameter()]
     [string]$BaseUri = $CloudflareApi.BaseUri,
 
     [Parameter()]
     [string]$ApiToken = $CloudflareApi.ApiToken,
-
-    [Parameter(Mandatory)]
-    [string]$ZoneId,
-
-    [Parameter(Mandatory)]
-    [string]$Name
+    
+    [Parameter()]
+    [string]$ZoneId = $CloudflareApi.ZoneId
 ) {
     <#
     .SYNOPSIS

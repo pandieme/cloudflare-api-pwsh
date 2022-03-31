@@ -3,7 +3,10 @@ function Set-CloudflareApi(
     [string]$ApiToken,
 
     [Parameter()]
-    [string]$BaseUri
+    [string]$BaseUri,
+
+    [Parameter()]
+    [string]$ZoneId
 ) {
     <#
     .SYNOPSIS
@@ -19,6 +22,7 @@ function Set-CloudflareApi(
             $CloudflareApi = [pscustomobject]@{
                 BaseUri  = $BaseUri ? $BaseUri : "https://api.cloudflare.com/client/v4"
                 ApiToken = $ApiToken ? $ApiToken : $null
+                ZoneId   = $ZoneId ? $ZoneId : $null
             }
         }
         else {
@@ -26,6 +30,7 @@ function Set-CloudflareApi(
             $CloudflareApi = [pscustomobject]@{
                 BaseUri  = $BaseUri ? $BaseUri : $CloudflareApi.BaseUri
                 ApiToken = $ApiToken ? $ApiToken : $CloudflareApi.ApiToken
+                ZoneId   = $ZoneId ? $ZoneId : $CloudflareApi.ZoneId
             }
         }
         $CloudflareApi | ConvertTo-Json | Out-File -FilePath $ConfigPath -Force
@@ -33,5 +38,6 @@ function Set-CloudflareApi(
     catch {
         throw
     }
+    $global:CloudflareApi = $CloudflareApi
     return $CloudflareApi
 }
