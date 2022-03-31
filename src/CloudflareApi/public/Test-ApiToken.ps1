@@ -1,6 +1,6 @@
 function Test-ApiToken(
-    [Parameter(Mandatory)]
-    [string]$BaseUri,
+    [Parameter()]
+    [string]$BaseUri = $CloudflareApi.BaseUri,
 
     [Parameter(Mandatory)]
     [string]$ApiToken

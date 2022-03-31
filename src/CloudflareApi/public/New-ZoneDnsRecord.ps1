@@ -1,6 +1,6 @@
 function New-ZoneDnsRecord(
-    [Parameter(Mandatory)]
-    [string]$BaseUri,
+    [Parameter()]
+    [string]$BaseUri = $CloudflareApi.BaseUri,
 
     [Parameter(Mandatory)]
     [string]$ApiToken,
@@ -18,6 +18,7 @@ function New-ZoneDnsRecord(
     [Parameter(Mandatory)]
     [string]$Content,
 
+    [Parameter()]
     [switch]$Proxied
 ) {
     <#
