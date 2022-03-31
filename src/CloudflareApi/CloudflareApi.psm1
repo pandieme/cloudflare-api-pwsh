@@ -14,8 +14,13 @@ $PublicFunctions = @()
     }
 }
 
-$CloudflareApi = [pscustomobject]@{
-    BaseUri = "https://api.cloudflare.com/client/v4"
+$ConfigPath = "~\.pwsh\CloudflareApi.json"
+
+if (!(Test-Path -Path $ConfigPath)) {
+    $CloudflareApi = Set-CloudflareApi
+}
+else {
+    $CloudflareApi = Get-Content -Path $ConfigPath -Raw | ConvertFrom-Json
 }
 
 Export-ModuleMember -Function $PublicFunctions -Variable "CloudflareApi"

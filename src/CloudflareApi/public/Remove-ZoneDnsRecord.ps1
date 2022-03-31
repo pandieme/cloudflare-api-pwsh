@@ -2,8 +2,8 @@ function Remove-ZoneDnsRecord(
     [Parameter()]
     [string]$BaseUri = $CloudflareApi.BaseUri,
 
-    [Parameter(Mandatory)]
-    [string]$ApiToken,
+    [Parameter()]
+    [string]$ApiToken = $CloudflareApi.ApiToken,
 
     [Parameter(Mandatory)]
     [string]$ZoneId,
