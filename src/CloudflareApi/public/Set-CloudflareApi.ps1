@@ -5,6 +5,12 @@ function Set-CloudflareApi(
     [Parameter()]
     [string]$BaseUri
 ) {
+    <#
+    .SYNOPSIS
+    Set CloudflareApi Configuration
+    .DESCRIPTION
+    Create config file in user profile if it doens't exist, or update it with updated values
+    #>
     $ConfigPath = "~\.pwsh\CloudflareApi.json"
 
     try {
