@@ -4,15 +4,15 @@ BeforeAll {
 
 Describe -Name 'Test-ApiToken' {
     BeforeAll {
-        $TestApiToken = 'wxnfS4gF3T1AO2YCcO6NShE4o3DT8Ix8dcDYXKVW'
+        $ApiToken = 'wxnfS4gF3T1AO2YCcO6NShE4o3DT8Ix8dcDYXKVW'
         $BaseUri = 'https://api.cloudflare.com/client/v4'
     }
 
     It -Name 'Valid token' {
-        Test-ApiToken -ApiToken $TestApiToken | Should -Be $true
+        Test-ApiToken -BaseUri $BaseUri -ApiToken $ApiToken | Should -Be $true
     }
 
     It -Name 'Invalid token' {
-        Test-ApiToken -ApiToken 'randomgibberish' | Should -Be $false
+        Test-ApiToken -BaseUri $BaseUri -ApiToken 'randomgibberish' | Should -Be $false
     }
 }
