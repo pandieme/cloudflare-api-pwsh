@@ -23,6 +23,7 @@ function Remove-ZoneDnsRecord(
 
     try {
         $DnsRecord = Get-ZoneDnsRecord `
+            -BaseUri $BaseUri `
             -ApiToken $ApiToken `
             -ZoneId $ZoneId `
             -Name $Name

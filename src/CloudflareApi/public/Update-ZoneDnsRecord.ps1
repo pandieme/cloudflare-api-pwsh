@@ -26,6 +26,7 @@ function Update-ZoneDnsRecord(
     #>
 
     $Parameters = @{
+        BaseUri  = $BaseUri
         ApiToken = $ApiToken
         ZoneId   = $ZoneId
         Name     = $Name
@@ -36,6 +37,7 @@ function Update-ZoneDnsRecord(
 
     try {
         $DnsRecord = Get-ZoneDnsRecord `
+            -BaseUri $BaseUri `
             -ApiToken $ApiToken `
             -ZoneId $ZoneId `
             -Name $Name
