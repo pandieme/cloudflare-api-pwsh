@@ -6,7 +6,10 @@ function Set-CloudflareApi(
     [string]$BaseUri,
 
     [Parameter()]
-    [string]$ZoneId
+    [string]$ZoneId,
+
+    [Parameter()]
+    [string]$ConfigPath = "~\.pwsh\CloudflareApi.json"
 ) {
     <#
     .SYNOPSIS
@@ -14,8 +17,6 @@ function Set-CloudflareApi(
     .DESCRIPTION
     Create config file in user profile if it doens't exist, or update it with updated values
     #>
-    $ConfigPath = "~\.pwsh\CloudflareApi.json"
-
     try {
         if (!(Test-Path -Path $ConfigPath)) {
             New-Item -Path $ConfigPath -ItemType File -Force | Out-Null
