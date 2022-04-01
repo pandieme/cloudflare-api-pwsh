@@ -9,7 +9,7 @@ function Set-CloudflareApi(
     [string]$ZoneId,
 
     [Parameter()]
-    [string]$ConfigPath = "~\.pwsh\CloudflareApi.json"
+    [string]$ConfigPath = "${Env:UserProfile}\.pwsh\CloudflareApi.json"
 ) {
     <#
     .SYNOPSIS
