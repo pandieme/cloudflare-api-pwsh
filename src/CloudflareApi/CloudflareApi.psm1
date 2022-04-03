@@ -14,7 +14,7 @@ $PublicFunctions = @()
     }
 }
 
-$ConfigPath = "${Env:UserProfile}\.pwsh\CloudflareApi.json"
+$ConfigPath = "~\.pwsh\CloudflareApi.json"
 
 if (!(Test-Path -Path $ConfigPath)) {
     $CloudflareApi = Set-CloudflareApi

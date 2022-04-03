@@ -42,7 +42,7 @@ function Update-ZoneDnsRecord(
             -ApiToken $ApiToken `
             -ZoneId $ZoneId `
             -Name $Name
-    
+
         if (!$DnsRecord) {
             $Result = New-ZoneDnsRecord @Parameters
         }
