@@ -4,7 +4,7 @@ $PublicFunctions = @()
     "$PSScriptRoot/private"
 ) | ForEach-Object {
     if (Test-Path -Path $_) {
-        Get-ChildItem -Path $_ -Filter "*.ps1" | `
+        Get-ChildItem -Path $_ -Filter "*.ps1" -Recurse | `
             ForEach-Object {
             if ($_ -match 'public') {
                 $PublicFunctions += $_.BaseName

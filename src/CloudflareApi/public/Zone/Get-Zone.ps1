@@ -1,39 +1,36 @@
-function Get-ZoneDnsRecord(
+function Get-Zone(
     [Parameter(Mandatory)]
-    [string]$Name,
+    [string]
+    $Name,
 
     [Parameter()]
-    [string]$BaseUri = $CloudflareApi.BaseUri,
+    [string]
+    $BaseUri = $CloudflareApi.BaseUri,
 
     [Parameter()]
-    [string]$ApiToken = $CloudflareApi.ApiToken,
-    
-    [Parameter()]
-    [string]$ZoneId = $CloudflareApi.ZoneId
+    [string]
+    $ApiToken = $CloudflareApi.ApiToken
 ) {
     <#
     .SYNOPSIS
-    Find a DNS record within a zone
-    #>
-
+    Get Cloudflare Zone
+#>
     $Headers = @{
         'Authorization' = "Bearer $ApiToken"
         'Content-Type'  = "application/json"
     }
 
     $Query = @(
-        "type=CNAME,A"
         "name=$Name"
     ) | Join-String -Property $_ -Separator "&" -OutputPrefix "?"
 
-    $Uri = $BaseUri + "/zones/$ZoneId/dns_records$Query"
+    $Uri = $BaseUri + "/zones$Query"
 
     try {
         $Result = Invoke-RestMethod `
             -Method Get `
             -Uri $Uri `
-            -Headers $Headers `
-            -Body $Body
+            -Headers $Headers
     }
     catch {
         throw
