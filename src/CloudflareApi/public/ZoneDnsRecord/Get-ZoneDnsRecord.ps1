@@ -21,12 +21,12 @@ function Get-ZoneDnsRecord(
         'Content-Type'  = "application/json"
     }
 
-    $Query = @(
-        "type=CNAME,A"
-        "name=$Name"
-    ) | Join-String -Property $_ -Separator "&" -OutputPrefix "?"
+    $Query = Format-Query -Table @{
+        type = "CNAME,A"
+        name = $Name
+    }
 
-    $Uri = $BaseUri + "/zones/$ZoneId/dns_records$Query"
+    $Uri = $BaseUri + "/zones/$ZoneId/dns_records" + $Query
 
     try {
         $Result = Invoke-RestMethod `

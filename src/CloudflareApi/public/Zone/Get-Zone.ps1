@@ -20,11 +20,11 @@ function Get-Zone(
         'Content-Type'  = "application/json"
     }
 
-    $Query = @(
-        "name=$Name"
-    ) | Join-String -Property $_ -Separator "&" -OutputPrefix "?"
+    $Query = Format-Query -Table @{
+        name = $Name
+    }
 
-    $Uri = $BaseUri + "/zones$Query"
+    $Uri = $BaseUri + "/zones" + $Query
 
     try {
         $Result = Invoke-RestMethod `
