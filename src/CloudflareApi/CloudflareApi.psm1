@@ -14,13 +14,6 @@ $PublicFunctions = @()
     }
 }
 
-$ConfigPath = "~\.pwsh\CloudflareApi.json"
-
-if (!(Test-Path -Path $ConfigPath)) {
-    $CloudflareApi = Set-CloudflareApi
-}
-else {
-    $CloudflareApi = Get-Content -Path $ConfigPath -Raw | ConvertFrom-Json
-}
+$CloudflareApi = Set-CloudflareApi
 
 Export-ModuleMember -Function $PublicFunctions -Variable "CloudflareApi"
