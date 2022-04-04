@@ -1,25 +1,32 @@
 function Update-ZoneDnsRecord(
     [Parameter(Mandatory)]
-    [string]$Name,
+    [string]
+    $Name,
 
     [Parameter(Mandatory)]
     [ValidateSet('A', 'CNAME')]
-    [string]$Type,
+    [string]
+    $Type,
 
     [Parameter(Mandatory)]
-    [string]$Content,
+    [string]
+    $Content,
 
     [Parameter()]
-    [switch]$Proxied,
+    [switch]
+    $Proxied,
 
     [Parameter()]
-    [string]$BaseUri = $CloudflareApi.BaseUri,
+    [string]
+    $BaseUri = $CloudflareApi.BaseUri,
     
     [Parameter()]
-    [string]$ApiToken = $CloudflareApi.ApiToken,
+    [string]
+    $ApiToken = $CloudflareApi.ApiToken,
 
     [Parameter()]
-    [string]$ZoneId = $CloudflareApi.ZoneId
+    [string]
+    $ZoneId = $CloudflareApi.ZoneId
 ) {
     <#
     .SYNOPSIS

@@ -1,9 +1,11 @@
 function Test-ApiToken(
     [Parameter()]
-    [string]$BaseUri = $CloudflareApi.BaseUri,
+    [string]
+    $BaseUri = $CloudflareApi.BaseUri,
 
     [Parameter()]
-    [string]$ApiToken = $CloudflareApi.ApiToken
+    [string]
+    $ApiToken = $CloudflareApi.ApiToken
 ) {
     <#
     .SYNOPSIS

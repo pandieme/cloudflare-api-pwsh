@@ -1,15 +1,19 @@
 function Set-CloudflareApi(
     [Parameter()]
-    [string]$ApiToken,
+    [string]
+    $ApiToken,
 
     [Parameter()]
-    [string]$BaseUri,
+    [string]
+    $BaseUri,
 
     [Parameter()]
-    [string]$ZoneId,
+    [string]
+    $ZoneId,
 
     [Parameter()]
-    [string]$ConfigPath = "~\.pwsh\CloudflareApi.json"
+    [string]
+    $ConfigPath = "~\.pwsh\CloudflareApi.json"
 ) {
     <#
     .SYNOPSIS
@@ -39,6 +43,5 @@ function Set-CloudflareApi(
     catch {
         throw
     }
-
     return $CloudflareApi
 }

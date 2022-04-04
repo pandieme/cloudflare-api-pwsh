@@ -1,24 +1,36 @@
 function Set-ZoneDnsRecord(
     [Parameter(Mandatory)]
-    [string]$Id,
+    [string]
+    $Id,
 
-    [string]$Name,
+    [Parameter()]
+    [string]
+    $Name,
 
+    [Parameter()]
     [ValidateSet('A', 'CNAME')]
-    [string]$Type,
+    [string]
+    $Type,
 
-    [string]$Content,
+    [Parameter()]
+    [string]
+    $Content,
 
-    [bool]$Proxied,
+    [Parameter()]
+    [bool]
+    $Proxied,
     
     [Parameter()]
-    [string]$BaseUri = $CloudflareApi.BaseUri,
+    [string]
+    $BaseUri = $CloudflareApi.BaseUri,
 
     [Parameter()]
-    [string]$ApiToken = $CloudflareApi.ApiToken,
+    [string]
+    $ApiToken = $CloudflareApi.ApiToken,
 
     [Parameter()]
-    [string]$ZoneId = $CloudflareApi.ZoneId
+    [string]
+    $ZoneId = $CloudflareApi.ZoneId
 ) {
     <#
     .SYNOPSIS

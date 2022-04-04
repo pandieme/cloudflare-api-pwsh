@@ -1,6 +1,7 @@
 function Get-CloudflareApi(
     [Parameter()]
-    [string]$ConfigPath = "~\.pwsh\CloudflareApi.json"
+    [string]
+    $ConfigPath = "~\.pwsh\CloudflareApi.json"
 ) {
     <#
         .SYNOPSIS
@@ -19,6 +20,5 @@ function Get-CloudflareApi(
     catch {
         throw
     }
-    
     return $CloudflareApi
 }
